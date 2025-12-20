@@ -2,26 +2,21 @@ package pages;
 
 public class HomePage extends BasePage {
 
-    // Locator de un elemento ÚNICO del Home
-    private String homeContainer = "//div[@id='home-container']";
-    // o por ejemplo:
-    // private String tituloHome = "//h1[contains(text(),'Home')]";
-    // private String btnNuevaTarea = "//button[text()='Nueva Tarea']";
+   
+    private String homeTitulo = "//h5[@class='MuiTypography-root MuiTypography-h5 toolbar-title css-8u639']";
+
 
     public HomePage() {
         super();
     }
 
-    // =========================
-    // Validations
-    // =========================
 
     public boolean isHomeVisible() {
-        return isElementDisplayed(homeContainer);
+        return isElementDisplayed(homeTitulo);
     }
 
     // Opcional (para Login_012)
     public boolean isSesionActiva() {
-        return isElementDisplayed(homeContainer);
+        return isElementDisplayed(homeTitulo);
     }
 }

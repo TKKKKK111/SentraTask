@@ -28,3 +28,7 @@ java {
         languageVersion = JavaLanguageVersion.of(21)
     }
 }
+test {
+    systemProperty "cucumber.filter.tags", System.getProperty("cucumber.filter.tags")
+    systemProperty "cucumber.glue", "steps"
+}
