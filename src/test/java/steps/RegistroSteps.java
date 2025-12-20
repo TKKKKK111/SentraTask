@@ -102,7 +102,7 @@ public class RegistroSteps {
         loginPage.clickCrearNuevoUsuario();
     }
     @And("Accede al formulario de registro")
-    public void el_usuario_accede_al_formulario_de_registro123() {
+    public void el_usuario_accede_al_formulario_de_registroCancelar() {
         registroPage.isModalRegistroVisible();
     }
 
