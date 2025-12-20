@@ -1,0 +1,30 @@
+plugins {
+    id 'java'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    // Selenium
+    implementation 'org.seleniumhq.selenium:selenium-java:4.39.0'
+    implementation 'org.seleniumhq.selenium:selenium-chrome-driver:4.39.0'
+
+    // WebDriverManager
+    implementation 'io.github.bonigarcia:webdrivermanager:6.3.3'
+
+    // Cucumber + JUnit
+    testImplementation 'io.cucumber:cucumber-java:7.33.0'
+    testImplementation 'io.cucumber:cucumber-junit:7.33.0'
+
+    // JUnit
+    testImplementation 'junit:junit:4.13.2'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
