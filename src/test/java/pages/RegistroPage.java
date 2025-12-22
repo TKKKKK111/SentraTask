@@ -13,6 +13,7 @@ public class RegistroPage extends BasePage {
     private String alertRegistroExitoso = "//div[@role='alert']//div[text()='Usuario creado correctamente']";
     private String alertClaveErronea = "/html/body/div[2]/div[3]/div/div[1]/div[1]/div/div/div";
     private String clickCancelar = "//button[normalize-space()='Cancelar']";
+    private String cerrarAlerta= "//button[@aria-label='Close']";
     
 
 
@@ -21,6 +22,7 @@ public class RegistroPage extends BasePage {
     }
 
 
+        ///Validaciones y acciones para el formulario de registro//
 
     public boolean isModalRegistroVisible() {
         return isElementDisplayed(modalRegistro);
@@ -62,5 +64,8 @@ public class RegistroPage extends BasePage {
     }
     public void clickCancelar() {
         clickElement(clickCancelar);
+    }
+    public void clickCerrarAlerta(){
+        clickElement(cerrarAlerta);
     }
 }

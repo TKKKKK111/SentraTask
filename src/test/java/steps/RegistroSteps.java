@@ -12,6 +12,7 @@ public class RegistroSteps {
     LoginPage loginPage = new LoginPage();
     RegistroPage registroPage = new RegistroPage();
 
+    /// Acá iniciamos la web y vamos al formulario de registro
 
     @Given("el usuario se encuentra en la pantalla de login")
     public void el_usuario_esta_en_la_pantalla_de_login() {
@@ -28,10 +29,12 @@ public class RegistroSteps {
             registroPage.isModalRegistroVisible();
     }
 
-    @When("el usuario accede al formulario de registro")
+    @Given("el usuario accede al formulario de registro")
     public void el_usuario_accede_al_formulario_de_registro() {
         registroPage.isModalRegistroVisible();
     }
+    ///// Validaciones de campo formulario de registro Flujo "Correcto"/////
+
 
     @When("ingresa nombre válido")
     public void ingresa_nombre_válido() {
@@ -60,11 +63,14 @@ public class RegistroSteps {
     @And("presiona el botón Registrar usuario")
     public void presiona_el_boton_registrar_usuario() {
         registroPage.clickRegistrarUsuario();
-        
+
     }
+
+
     @Then("el sistema registra al usuario correctamente")
     public void el_sistema_registra_al_usuario_correctamente() {
          registroPage.isRegistroExitosoVisible();
+         registroPage.clickCerrarAlerta();
 
     }
     @And("redirige al login")
@@ -74,7 +80,7 @@ public class RegistroSteps {
 
 
 
-    ///@R_009
+    ///Validamos los errores 
      @Given("el usuario accede al modal de registro")
         public void el_usuario_accede_al_formulario_de_registro2() {
           loginPage.clickCrearNuevoUsuario();
@@ -95,8 +101,6 @@ public class RegistroSteps {
         registroPage.isClaveErroneaVisible();
     }
 
-
-    //@R_013
     @Given("el usuario clickea en el botón Crear nuevo usuario")
     public void el_usuario_clickea_en_el_boton_crear_nuevo_usuario() {
         loginPage.clickCrearNuevoUsuario();

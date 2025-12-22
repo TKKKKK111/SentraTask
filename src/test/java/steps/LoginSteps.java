@@ -38,7 +38,7 @@ public class LoginSteps {
     
     @Given("el navegador web está abierto y soportado por el sistema")
     public void el_navegador_web_esta_abierto_y_soportado_por_el_sistema() {
-        // Driver inicializado en BasePage
+        // se estará usando el Drive que está previametne inicializado en BasePage
     }
 
 

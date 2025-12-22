@@ -1,4 +1,17 @@
 @Registro
+
+####################################
+
+#¡¡¡IMPORTANTE!!!! Las validaciones de campos no fueron automatizadas al 100%
+#ya que no se encuentran implementadas en la versión actual del sistema.
+#Estas fueron identificadas y documentadas como incidentes a corregir para una "futura implementación".
+
+
+##Solamente se pudo validar el caso de contraseñas no coincidentes y el flujo de cancelar registro. 
+##Ya que estos sí cuentan con mensajes y comportamientos visibles en la UI.
+
+###################################
+
 Feature: Registro
   Como usuario del sistema
   Quiero registrarme

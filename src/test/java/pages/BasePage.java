@@ -1,10 +1,13 @@
 package pages;
 
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+import org.junit.Assert;
+import java.util.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -208,6 +211,40 @@ public class BasePage {
     );
 }
 
-
+    public boolean isElementPresent(String xpath) {
+    return driver.findElements(By.xpath(xpath)).size() > 0;
 }
 
+    public boolean tareasExistentes(String locator) {
+        List<WebElement> elementos = driver.findElements(By.xpath(locator));
+        return elementos.size() > 0;
+    }
+
+
+
+    public void validarOrden(List<String> actual, boolean ascendente) {
+
+    List<String> esperado = new ArrayList<>(actual);
+
+    if (ascendente) {
+        esperado.sort(String.CASE_INSENSITIVE_ORDER);
+    } else {
+        esperado.sort(Collections.reverseOrder(String.CASE_INSENSITIVE_ORDER));
+    }
+
+    Assert.assertEquals(esperado, actual);
+    }
+
+    public List<WebElement> findElements(String locator) {
+    return driver.findElements(By.xpath(locator));}
+
+
+public String getText(String locator) {
+    WebElement element = wait.until(
+        ExpectedConditions.presenceOfElementLocated(By.xpath(locator))
+    );
+    return element.getText().trim();
+}
+
+    
+}
