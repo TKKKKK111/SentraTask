@@ -55,9 +55,9 @@ Módulo	Comando Gradle	Observación
 
 🏠 Home	        ./gradlew test "-Dcucumber.filter.tags=@Home"	-   ✅ Se considerarán válidos los casos que muestren usuarios sin tareas y con tarea, además del orden de las tabla.
 
-👤 Perfil    ./gradlew test "-Dcucumber.filter.tags=@PerfilPage"	✅ Ediciones del perfil exitosas  y fallidas (Se controlan los errores esperados) se consideran válidos
+👤 Perfil    ./gradlew test "-Dcucumber.filter.tags=@Perfil"	✅ Ediciones del perfil exitosas  y fallidas (Se controlan los errores esperados) se consideran válidos
 
-✏️ NuevaTarea	./gradlew test "-Dcucumber.filter.tags=@NuevaTarea"	✅ Creación y edición de tareas exitosos se consideran válidos (No tiene validaciones para ningun campo/ está documentado)
+✏️ NuevaTarea	./gradlew test "-Dcucumber.filter.tags=@nuevaTarea"	✅ Creación y edición de tareas exitosos se consideran válidos (No tiene validaciones para ningun campo/ está documentado)
 
 
 
