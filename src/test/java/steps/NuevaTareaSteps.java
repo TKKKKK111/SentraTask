@@ -1,24 +1,30 @@
 package steps;
 
 import io.cucumber.java.en.*;
+import io.cucumber.java.eo.Se;
 import io.cucumber.datatable.DataTable;
 import pages.HomePage;
 import pages.LoginPage;
 import pages.NuevaTareaPage;
+import pages.PerfilPage;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Map;
 
+import org.junit.Assert;
+
 public class NuevaTareaSteps {
 
     LoginPage loginPage = new LoginPage();
     HomePage homePage = new HomePage();
     NuevaTareaPage nuevaTareaPage = new NuevaTareaPage();
+    PerfilPage perfilPage = new PerfilPage();
     String tituloIngresado;
     String descripcionIngresada;
     String prioridadIngresada;
+    String compararTitulos;
 
     int cantidadInicial;
 
@@ -124,5 +130,44 @@ public void validar_retorno_home() {
  
                 
 
-                
+
+
+
+
+        @Given ("el usuario clickea una tarea")
+        public void usuario_clickea_una_tarea(){
+            nuevaTareaPage.clickTareaTabla();
+            nuevaTareaPage.clickBotonEditarTarea();
+        }
+    @When ("se abre Modal Editar Tarea")
+        public void se_abre_modal_editar_tareas(){
+           nuevaTareaPage.isModalEditarTareaVisible();
+        }   
+    @Then ("Se edita campos")
+        public void se_clickea_boton_editar_tarea()
+        {
+        perfilPage.editarCampo("//input[@id='title']", "EditarTarea1");
+        compararTitulos= "EditarTarea1";
+        
+        }
+    @And ("se cierra el modal")
+    public void se_cierra_el_modal_editar(){
+        nuevaTareaPage.clickBotonConfirmarEdicion();
+       
+    }
+    @And ("Se actualiza la tarea correctamente")
+    public void se_actualiza_tarea_correctamente_(){
+       nuevaTareaPage.isAlertaSuccessEditVisible();
+        assertEquals(compararTitulos, "EditarTarea1");
+    }
+
+    @And ("el usuario clickea boton Cancelar Editar")
+    public void el_usuario_clickea_boton_cancelar_editar(){
+        nuevaTareaPage.clickBotonCancelarEditar();
+    }
+
+    @Given ("se abre Modal Editar Tareas")
+    public void se_abre_el_modal_editar_tarea(){
+        nuevaTareaPage.clickBotonEditarTarea();
+    }
 }

@@ -17,7 +17,6 @@ public class NuevaTareaPage extends BasePage {
         super();
     }
 
-    // ================= LOCATORS =================
 
     private static final String MODAL_NUEVA_TAREA ="//div[@role='dialog' and .//h2[normalize-space()='Crear nueva Tarea']]";
 
@@ -33,18 +32,36 @@ public class NuevaTareaPage extends BasePage {
     private static final By FILAS_TABLA =By.xpath("//tbody/a[contains(@class,'MuiTableRow-root')]");
 
     private static final String ALERTA_SUCCESS = "//div[@role='alert']";
-    
-    // ================= STATE =================
-
+    private String primerElementoTabla="//tbody[@class='MuiTableBody-root css-1xnox0e']/a[1]";
+    private String nuevaTareaIsVisible="//td[normalize-space()='Fecha Modificación']";
+    private String botonCancelarEditar="//button[normalize-space(text())='Cancelar']";
+    private String botonEditarTarea="//button[text()='Editar Tarea']";
+    private String botonConfirmarEdicion="//button[normalize-space(text())='Modificar Tarea']";
+    private String alertaSuccessEdit="//div[@role='alert' and text()='Tarea modificada correctamente']";
     private String ultimoTituloIngresado;
     private String ultimaPrioridadIngresada;
 
-    // ================= VISIBILIDAD =================
 
     public boolean isModalVisible() {
         return isElementDisplayed(MODAL_NUEVA_TAREA);
     }
+    public boolean isAlertaSuccessEditVisible() {
+        return isElementDisplayed(alertaSuccessEdit);
+    }
+    public boolean isModalEditarTareaVisible() {
+        return isElementDisplayed(nuevaTareaIsVisible);
+    }
 
+    public void clickBotonCancelarEditar(){
+        clickElement(botonCancelarEditar);
+    }
+
+     public void clickBotonEditarTarea(){
+        clickElement(botonEditarTarea);
+    }
+    public void clickBotonConfirmarEdicion(){
+        clickElement(botonConfirmarEdicion);
+    }
     public boolean camposVisibles() {
         return isElementDisplayed(INPUT_TITULO)
             && isElementDisplayed(INPUT_DESCRIPCION)
@@ -52,7 +69,7 @@ public class NuevaTareaPage extends BasePage {
             && isElementDisplayed(INPUT_PRIORIDAD);
     }
 
-    // ================= ACCIONES =================
+
 
 
 public void setDateTime(By locator, String fechaIso) {
@@ -97,15 +114,12 @@ public void setDateTime(By locator, String fechaIso) {
         clickElement(BTN_CANCELAR);
     }
 
-    // ================= VALIDACIONES =================
+   
 
     public boolean seAgregoUnaNuevaTarea() {
         return isElementDisplayed(ALERTA_SUCCESS);
     }
 
-    /**
-     * 🔥 VALIDACIÓN ROBUSTA – SIN STALE ELEMENT
-     */
     public boolean existeTareaEnTabla(String tituloEsperado, String prioridadEsperada) {
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -131,17 +145,24 @@ public void setDateTime(By locator, String fechaIso) {
         return false;
     }
 
+
+    public void clickTareaTabla(){
+        clickElement(primerElementoTabla);
+    }
+
+
+
+
     // ================= HELPERS =================
 
     public boolean existeUltimaTarea() {
         return driver.findElements(FILAS_TABLA).size() > 0;
     }
-
-    public String getUltimoTituloIngresado() {
-        return ultimoTituloIngresado;
+        public boolean compararNombreTarea(String nombrePerfilComparar){
+         String nombreEnPantalla = readText(nombrePerfilComparar).trim();
+          return nombreEnPantalla.equals(nombrePerfilComparar);
+        }
     }
-
-    public String getUltimaPrioridadIngresada() {
-        return ultimaPrioridadIngresada;
-    }
-}
+    
+    
+    

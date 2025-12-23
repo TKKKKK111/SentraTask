@@ -39,3 +39,15 @@ Feature: Gestión de Tareas
     Given el usuario debe abrir Modal creación
     Then el usuario clickea botón Cancelar Tarea
     And el usuario retorna a la vista Home
+
+
+  Scenario: Editar tareas
+    Given el usuario clickea una tarea
+    When se abre Modal Editar Tarea 
+    Then Se edita campos
+    And se cierra el modal 
+    And Se actualiza la tarea correctamente 
+
+  Scenario: Cancelar Edición de tareas
+    Given se abre Modal Editar Tareas 
+    And el usuario clickea boton Cancelar Editar
