@@ -44,6 +44,8 @@ public class LoginSteps {
 
     @Given("el usuario se encuentra previamente registrado en el sistema")
     public void el_usuario_se_encuentra_previamente_registrado_en_el_sistema() {
+        ///No se pudo validar, ya que no tengo de donde sacar los usuarios registrados previamente.
+        /// Solo se validó a la hora de iniciar sesión que el usuario no tenga errores. 
     }
 
     @Given("el usuario se encuentra en la pantalla de inicio de sesión")

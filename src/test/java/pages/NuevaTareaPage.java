@@ -6,7 +6,6 @@ import java.util.Map;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -88,23 +87,20 @@ public void setDateTime(By locator, String fechaIso) {
             ultimoTituloIngresado = datos.get("Título");
             writeText(INPUT_TITULO, ultimoTituloIngresado);
         }
-
-        if (datos.containsKey("Descripción")) {
-            writeText(INPUT_DESCRIPCION, datos.get("Descripción"));
-        }
+                if (datos.containsKey("Descripción")) {
+                    writeText(INPUT_DESCRIPCION, datos.get("Descripción"));
+                }
       
-            if (datos.containsKey("Fecha de Vencimiento")) {
-            setDateTime(INPUT_FECHA_VENCIMIENTO2, "2025-12-20T19:29");
-
-
-        }
-
-
-        if (datos.containsKey("Prioridad")) {
-            ultimaPrioridadIngresada = datos.get("Prioridad");
-            writeText(INPUT_PRIORIDAD, ultimaPrioridadIngresada);
-        }
+                        if (datos.containsKey("Fecha de Vencimiento")) {
+                        setDateTime(INPUT_FECHA_VENCIMIENTO2, "2025-12-20T19:29");
+                    }
+                                if (datos.containsKey("Prioridad")) {
+                                    ultimaPrioridadIngresada = datos.get("Prioridad");
+                                    writeText(INPUT_PRIORIDAD, ultimaPrioridadIngresada);
+                                }
     }
+
+
 
     public void clickCrear() {
         clickElement(BTN_CREAR_TAREA);
@@ -128,19 +124,15 @@ public void setDateTime(By locator, String fechaIso) {
         List<WebElement> filas = driver.findElements(FILAS_TABLA);
 
         for (int i = 1; i <= filas.size(); i++) {
-
-            String tituloXpath =
-                    "(//tbody/a[contains(@class,'MuiTableRow-root')])[" + i + "]/td[1]";
-            String prioridadXpath =
-                    "(//tbody/a[contains(@class,'MuiTableRow-root')])[" + i + "]/td[4]";
-
+            String tituloXpath ="(//tbody/a[contains(@class,'MuiTableRow-root')])[" + i + "]/td[1]";
+            String prioridadXpath ="(//tbody/a[contains(@class,'MuiTableRow-root')])[" + i + "]/td[4]";
             String tituloTabla = driver.findElement(By.xpath(tituloXpath)).getText().trim();
             String prioridadTabla = driver.findElement(By.xpath(prioridadXpath)).getText().trim();
 
-            if (tituloTabla.equals(tituloEsperado)
-                    && prioridadTabla.equals(prioridadEsperada)) {
-                return true;
-            }
+                    if (tituloTabla.equals(tituloEsperado)
+                            && prioridadTabla.equals(prioridadEsperada)) {
+                        return true;
+                    }
         }
         return false;
     }

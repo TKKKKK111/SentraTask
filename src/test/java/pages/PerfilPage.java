@@ -2,9 +2,6 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class PerfilPage extends BasePage {
@@ -98,11 +95,11 @@ public class PerfilPage extends BasePage {
     
 
 
-public String getValorTablaPerfil(String xpatha) {
-    
-    String valor = driver.findElement(By.xpath(xpatha)).getText();
-    return valor.replace(": ", "").trim();
-}
+        public String getValorTablaPerfil(String xpatha) {
+            
+            String valor = driver.findElement(By.xpath(xpatha)).getText();
+            return valor.replace(": ", "").trim();
+        }
 
 
 

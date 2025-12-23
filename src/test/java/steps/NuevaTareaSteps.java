@@ -1,19 +1,19 @@
 package steps;
 
-import io.cucumber.java.en.*;
-import io.cucumber.java.eo.Se;
-import io.cucumber.datatable.DataTable;
-import pages.HomePage;
-import pages.LoginPage;
-import pages.NuevaTareaPage;
-import pages.PerfilPage;
+import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import java.util.Map;
-
-import org.junit.Assert;
+import io.cucumber.datatable.DataTable;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import pages.HomePage;
+import pages.LoginPage;
+import pages.NuevaTareaPage;
+import pages.PerfilPage;
 
 public class NuevaTareaSteps {
 
@@ -132,7 +132,7 @@ public void validar_retorno_home() {
 
 
 
-
+// ================= Editar Tareas Modal =================
 
         @Given ("el usuario clickea una tarea")
         public void usuario_clickea_una_tarea(){

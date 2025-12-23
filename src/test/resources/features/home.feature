@@ -35,7 +35,7 @@ Scenario: Ordenar tareas por Título
   Then las tareas se muestran ordenadas alfabéticamente de Z a A
 
 
-@H_010
+@H_010 ##Se unificaron dos casos de prueba para acotar recursos
 Scenario: Ordenar tareas por Fechas
   Given el usuario iniciado sesión posee tareas con Fecha
   When ordena las tareas por fechas de forma ascendente
