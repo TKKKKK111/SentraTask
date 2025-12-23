@@ -17,6 +17,12 @@ Otros casos:
 
 ❌ Sin desarrollar: 21 casos (validaciones no críticas para automatización)
 
+
+
+
+
+
+
 📂 Estructura del Proyecto
 src
 └── test
@@ -46,6 +52,16 @@ src
             ├── nueva_tarea.feature
             ├── perfil.feature
             └── registro.feature
+
+
+
+
+
+
+
+
+
+
 
 ▶️ Ejecución de Pruebas por Módulo (En el orden que se muestra)
 Módulo	Comando Gradle	Observación
