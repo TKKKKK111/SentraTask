@@ -98,16 +98,3 @@ Sugerencia: ejecutar en el orden mostrado para flujo lógico de pruebas (Login �
 - Registrar capturas y logs en los pasos críticos para facilitar debugging.
 - Documentar casos manuales y pendientes para priorizarlos en futuras automatizaciones.
 
----
-
-## 🤝 Cómo colaborar
-1. Clona el repositorio.
-2. Crea una rama feature/tests-<nombre>.
-3. Añade/actualiza escenarios y Page Objects.
-4. Abre un pull request describiendo cambios y evidencias (logs/screenshots).
-
----
-
-Si quieres, puedo:
-- Formatear y commitear este README directamente (necesitaría permiso para crear un PR/branch),
-- O generar una versión traducida/compacta o con badges. ¿Qué prefieres?
