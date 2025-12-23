@@ -24,6 +24,8 @@ public class HomePage extends BasePage {
     private String switchTablaCompacta="//label[.//span[text()='Tabla compacta']]//input[@type='checkbox']";
     
 
+    
+
 
 
 
@@ -158,6 +160,9 @@ public void desactivarTablaCompacta() {
         clickElement(switchTablaCompact);
     }
 }
+
+    
+
 
 
   
