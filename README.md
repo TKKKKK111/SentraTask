@@ -1,29 +1,43 @@
-🟢 SentraTask – Proyecto de Automatización de Pruebas
+# 🟢 SentraTask — Automatización de Pruebas
 
-Descripción:
-Automatización de pruebas de los módulos principales de SentraTask, garantizando que las funcionalidades críticas funcionen correctamente y que las validaciones del sistema sean confiables.
+Un conjunto de pruebas automatizadas para los módulos principales de SentraTask. El objetivo es garantizar que las funcionalidades críticas funcionen correctamente y que las validaciones del sistema sean confiables.
 
-📊 Módulos y Casos de Prueba
-Módulo	Casos Totales	Observaciones
-🏠 Home	        10	    Visualización, navegación y ordenamiento de tareas
-🔑 Login	    5	    Inicio de sesión y validación de datos
-✏️ NuevaTarea	9	    Creación, edición, cancelación y validación de tareas
-👤 Perfil	    10	    Modificación de datos, cambio de contraseña y navegación
-📝 Registro	    4	    Registro de usuarios y validación de campos
+---
 
-Otros casos:
+## 📋 Contenido
+- Descripción
+- Módulos y casos de prueba
+- Estructura del proyecto
+- Cómo ejecutar las pruebas
+- Interpretación de resultados y notas
 
-⚙️ Manual: 30 casos
+---
 
-❌ Sin desarrollar: 22 casos (validaciones no críticas para automatización)
+## 🧭 Descripción
+Este repositorio contiene pruebas automatizadas (Cucumber + Java) organizadas con Page Object Model y Steps. Las pruebas cubren flujos principales: login, registro, gestión de tareas, perfil y navegación en la Home.
 
+---
 
+## 📊 Módulos y Casos de Prueba
 
+| Módulo      | Casos Totales | Observaciones |
+|-------------|---------------:|--------------|
+| 🏠 Home     | 10             | Visualización, navegación y ordenamiento de tareas |
+| 🔑 Login    | 5              | Inicio de sesión y validación de datos |
+| ✏️ NuevaTarea | 9            | Creación, edición, cancelación y validación de tareas |
+| 👤 Perfil   | 10             | Modificación de datos, cambio de contraseña y navegación |
+| 📝 Registro | 4              | Registro de usuarios y validación de campos |
 
+Otros:
+- ⚙️ Manual: 30 casos
+- ❌ Sin desarrollar: 22 casos (validaciones no críticas para automatización)
 
+---
 
+## 📂 Estructura del Proyecto
+El proyecto sigue el patrón Page Object + Steps (Cucumber). Estructura principal:
 
-📂 Estructura del Proyecto
+```text
 src
 └── test
     ├── java
@@ -46,39 +60,54 @@ src
     │       └── RegistroSteps.java
     │
     └── resources
-        └── features             # Archivos Gherkin
+        └── features            # Archivos Gherkin
             ├── home.feature
             ├── login.feature
             ├── nueva_tarea.feature
             ├── perfil.feature
             └── registro.feature
+```
 
+---
 
+## ▶️ Ejecución de Pruebas por Módulo
+Ejecuta con Gradle y filtrado por tags de Cucumber:
 
+| Módulo     | Comando Gradle                                                      | Observación |
+|------------|---------------------------------------------------------------------|-------------|
+| 🔑 Login   | `./gradlew test "-Dcucumber.filter.tags=@Login"`                    | ✅ Todos los escenarios deben pasar |
+| 📝 Registro| `./gradlew test "-Dcucumber.filter.tags=@Registro"`                 | ✅ Registros exitosos y fallidos (errores esperados) son válidos |
+| 🏠 Home    | `./gradlew test "-Dcucumber.filter.tags=@Home"`                     | ✅ Casos con/ sin tareas y orden de la tabla |
+| 👤 Perfil  | `./gradlew test "-Dcucumber.filter.tags=@Perfil"`                   | ✅ Ediciones exitosas y fallidas controladas son válidas |
+| ✏️ NuevaTarea | `./gradlew test "-Dcucumber.filter.tags=@nuevaTarea"`            | ✅ Creación y edición exitosas son válidas |
 
+Sugerencia: ejecutar en el orden mostrado para flujo lógico de pruebas (Login → Registro/Perfil → Home → NuevaTarea).
 
+---
 
+## ✅ Interpretación de Resultados
+- Cada escenario debe pasar al 100% para considerarse exitoso.
+- Los fallos se investigan a partir de los logs; corregir antes de la siguiente ejecución.
+- Nota importante sobre Perfil: algunas pruebas editan datos de la cuenta; ejecutar esas pruebas con cuidado (idealmente en cuentas de prueba) porque cambian el estado y pueden necesitar restauración después.
 
+---
 
+## 📝 Notas y Buenas Prácticas
+- Usar cuentas de prueba y datos aislados para evitar contaminación entre ejecuciones.
+- Mantener los escenarios deterministas: limpiar estado entre tests cuando aplique.
+- Registrar capturas y logs en los pasos críticos para facilitar debugging.
+- Documentar casos manuales y pendientes para priorizarlos en futuras automatizaciones.
 
+---
 
+## 🤝 Cómo colaborar
+1. Clona el repositorio.
+2. Crea una rama feature/tests-<nombre>.
+3. Añade/actualiza escenarios y Page Objects.
+4. Abre un pull request describiendo cambios y evidencias (logs/screenshots).
 
-▶️ Ejecución de Pruebas por Módulo (En el orden que se muestra)
-Módulo	Comando Gradle	Observación
-🔑 Login	    ./gradlew test "-Dcucumber.filter.tags=@Login"  	✅ Todos los escenarios deben pasar
+---
 
-📝 Registro	    ./gradlew test "-Dcucumber.filter.tags=@Registro"	✅ Registros exitosos y fallidos (Ya que están controlados los errores esperados) se consideran válidos
-
-🏠 Home	        ./gradlew test "-Dcucumber.filter.tags=@Home"	-   ✅ Se considerarán válidos los casos que muestren usuarios sin tareas y con tarea, además del orden de las tabla.
-
-👤 Perfil    ./gradlew test "-Dcucumber.filter.tags=@Perfil"	✅ Ediciones del perfil exitosas  y fallidas (Se controlan los errores esperados) se consideran válidos
-
-✏️ NuevaTarea	./gradlew test "-Dcucumber.filter.tags=@nuevaTarea"	✅ Creación y edición de tareas exitosos se consideran válidos (No tiene validaciones para ningun campo/ está documentado)
-
-
-
-✅ Interpretación de Resultados
-Cada escenario debe pasar al 100% para considerarse exitoso.
-Los casos que fallen se revisan en los logs y se corrigen antes de la siguiente ejecución. 
-En caso del PerfilPage: Se podrá *ejecutar una vez*,ya que editará los datos de la cuenta y el dato se deberá ser acondicionado.
-Las pruebas automatizadas cubren los flujos principales y validaciones críticas; los casos manuales o sin desarrollo se documentan pero no se ejecutan automáticamente.
+Si quieres, puedo:
+- Formatear y commitear este README directamente (necesitaría permiso para crear un PR/branch),
+- O generar una versión traducida/compacta o con badges. ¿Qué prefieres?
