@@ -15,7 +15,7 @@ Otros casos:
 
 ⚙️ Manual: 30 casos
 
-❌ Sin desarrollar: 21 casos (validaciones no críticas para automatización)
+❌ Sin desarrollar: 22 casos (validaciones no críticas para automatización)
 
 
 
